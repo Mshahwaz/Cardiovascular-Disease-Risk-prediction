@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVD risk prediction system</title>
+    <style>
+        body{
+       background-image: url({{url_for('static',filename='images/1076656.jpg')}}); 
+    }
+    </style>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <script defer src="script.js"></script>script>
+</head>
+<body>
+    
+    <div class="logo">
+        <h3>Cardiovascular disease prediction system</h3>
+    </div>
+    <div class="whole">
+    <div class="container">
+        <div class="title">Enter Patient Details</div>
+        <form action="/predict" method="POST">
+            <div class="userdetails">
+                <div class="input_box">
+                    <span class="Details">Age Of Pateint</span>
+                    <input type="number" name="Age" id="age" required>
+                </div>
+                
+                <div class="input_box">
+                    <span class="Details" id="chest">Chest pain Type</span>
+                    <select id="" name="chest">
+                        <option disabled selected value> -- select -- </option>
+                        <option value="1">Typical angina</option>
+                        <option value="2">Atypical angina</option>
+                        <option value="3">Non-anginal pain</option>
+                        <option value="4">Asymtometic</option>
+                      </select>
+                </div>
+                <div class="input_box">
+                    <span class="Details"> Resting Blood Pressure(mm/Hg)</span>
+                    <input type="number" name="RBP" id="RBP" required>
+                </div>
+                <div class="input_box">
+                    <span class="Details" id="chest">Gender</span>
+                    <select id="" name="sex">
+                        <option disabled selected value> -- select -- </option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                </div>
+                <div class="input_box">
+                    <span class="Details">Cholestrol(mg/dl )</span>
+                    <input type="number" name="CHLS" id="" required>
+                </div>
+                <div class="input_box">
+                    <span class="Details" id="chest">Fasting Blood Sugar</span>
+                    <select id="" name="FBS">
+                        <option disabled selected value> -- select -- </option>
+                        <option value="1">Greater than 120 mg/dl</option>
+                        <option value="0">less than</option>
+                      </select>
+                </div>
+                <div class="input_box">
+                    <span class="Details" id="chest">Resting Electrocardiogram test</span>
+                    <select id="" name="RECG">
+                        <option disabled selected value> -- select -- </option>
+                        <option value="0">Normal</option>
+                        <option value="1"> Abnormality in ST-T 
+                            wave</option>
+                        <option value="2"> Left ventricular hypertrophy</option>
+                      </select>
+                </div>
+                <div class="input_box">
+                    <span class="Details">Maximum heart rate</span>
+                    <input type="number" name="MHR" id="" required>
+                </div>
+                <div class="input_box">
+                    <span class="Details" id="chest">Exercise Angina</span>
+                    <select id="" name="EXA">
+                        <option disabled selected value> -- select -- </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                      </select>
+                </div>
+                <div class="input_box">
+                    <span class="Details">Oldpeak</span>
+                    <input type="number" name="oldpeak" id="" required step="any" min="0">
+                </div>
+                <div class="input_box">
+                    <span class="Details" id="chest">ST Slope</span>
+                    <select id="" name="ST">
+                        <option disabled selected value> -- select -- </option>
+                        <option value="1">Upsloping</option>
+                        <option value="2">Flat</option>
+                        <option value="3">Downsloping</option>
+                      </select>
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="result">
+    {%if prediction==1%}
+    <h3>Prediction: You are at Risk of having a Heart related disease </h3>
+    {%elif prediction==0 %}
+    <div class="heal"><h3>Prediction: You are Healthy</h3></div>
+    {%else%}
+    <h3></h3>
+    {%endif%}
+</div>
+
+</body>
+</html>
